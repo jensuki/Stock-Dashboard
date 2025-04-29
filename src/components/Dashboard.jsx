@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Spinner from './Spinner';
 
-const stocksToFetch = ['AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'NVDA'];
+const stocksToFetch = ['AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'NVDA', 'META', 'NFLX', 'BABA', 'JPM', 'V'];
+
 const API_KEY = import.meta.env.VITE_FINNHUB_API_KEY;
 
 const Dashboard = () => {
