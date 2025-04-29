@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Spinner from './Spinner';
 
-const stocksToFetch = ['AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA'];
+const stocksToFetch = ['AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'NVDA'];
 const API_KEY = import.meta.env.VITE_FINNHUB_API_KEY;
 
 const Dashboard = () => {
     const [stocks, setStocks] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -50,12 +51,26 @@ const Dashboard = () => {
         return <p className="text-center text-red-500">{error}</p>
     }
 
+    // for search input
+    const filteredStocks = stocks.filter((stock) =>
+        stock.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
-        <div className="overflow-x-auto">
-            {/* table headers */}
-            <table className="table-auto w-full bg-white rounded shadow border">
+        <div className="">
+            {/* search input */}
+            <div className="flex justify-center mb-4">
+                <input type="text"
+                    placeholder="Search stocks..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="border border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-gray-400"
+                />
+            </div>
+            {/* table */}
+            <table className="table-auto w-full bg-gray-50 rounded shadow border">
                 <thead className="bg-blue-100">
-                    <tr>
+                    <tr className="">
                         <th className="px-4 py-2">Symbol</th>
                         <th className="px-4 py-2">Price</th>
                         <th className="px-4 py-2">Change %</th>
@@ -63,8 +78,8 @@ const Dashboard = () => {
                 </thead>
                 {/* table rows */}
                 <tbody>
-                    {stocks.map((stock) => (
-                        <tr key={stock.symbol} className="text-center border-b hover:bg-gray-200">
+                    {filteredStocks.map((stock) => (
+                        <tr key={stock.symbol} className="text-center border-b hover:bg-gray-100">
                             <td className="px-4 py-2 font-semibold">{stock.symbol}</td>
                             <td className="px-4 py-2">{stock.c.toFixed(2)}</td>
                             <td className="px-4 py-2">
