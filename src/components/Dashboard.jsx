@@ -57,19 +57,19 @@ const Dashboard = () => {
     );
 
     return (
-        <div className="">
+        <div className="bg-gray-200 p-4 rounded-lg shadow-xl">
             {/* search input */}
             <div className="flex justify-center mb-4">
                 <input type="text"
                     placeholder="Search stocks..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="border border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-gray-400"
+                    className="border border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-gray-400 placeholder:italic"
                 />
             </div>
             {/* table */}
             <table className="table-auto w-full bg-gray-50 rounded shadow border">
-                <thead className="bg-blue-100">
+                <thead className="bg-blue-200">
                     <tr className="">
                         <th className="px-4 py-2">Symbol</th>
                         <th className="px-4 py-2">Price</th>
