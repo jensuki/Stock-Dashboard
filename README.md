@@ -2,8 +2,8 @@
 
 A simple stock price dashboard built with React, Tailwind CSS, and Finnhub API.
 
-## Live Demo
-[View Deployed App](your-vercel-link-here)
+### [Live Demo](https://stock-dashboard-virid-nine.vercel.app/)
+---
 
 ## Features
 - Fetches live stock data (symbol, price, change %)
